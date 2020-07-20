@@ -189,58 +189,74 @@ CSS 연결 방법
 
 CSS 기본 박스 모델
 
-- Content 영역: 콘텐츠 영억은 콘텐츠 경계가 감싼 영역으로, 글이나 이미지, 비디오 등 요소의 실제 내용을 포함합니다. 콘텐츠 영역의 크기는 콘텐츠 너비(콘텐츠 박스 너비)와 콘텐츠 높이(콘텐츠 박스 높이)입니다. 배경색과 배경 이미지를 가지고 있기도 합니다.
-- Padding 영역: padding영역은 안쪽 여백 경계가 감싼 영역으로, 콘텐츠 영역을 요소의 안쪽 여백까지 포함하는 크기로 확장합니다. 영역의 크기는 안쪽 여백 박스 너비와 안쪽 여백 박스 높이 입니다.
-- Border 영역: 테두리 경계가 감싼 영역으로, 안쪽 여백 영역을 요소의 테두리까지 포함하는 크기로 확장합니다. 영역의 크기는 테두리 박스 너비와 테두리 박스 높이입니다.
-- Margin 영역: margin영역은 바깥 여백 경계가 감싼 영역으로, 테두리 요소를 확장해 요소와 인근 요소 사이의 빈 공간까지 포함하도록 만듭니다. 영역의 크기는 바깥 여백 박스 너비와 바깥 여백 박스 높이입니다.
+- Content 영역: 콘텐츠 영억은 콘텐츠 경계가 감싼 영역으로, 글이나 이미지, 비디오 등 요소의 실제 내용을
+  포함합니다. 콘텐츠 영역의 크기는 콘텐츠 너비(콘텐츠 박스 너비)와 콘텐츠 높이(콘텐츠 박스 높이)입니다.
+  배경색과 배경 이미지를 가지고 있기도 합니다.
+- Padding 영역: padding영역은 안쪽 여백 경계가 감싼 영역으로, 콘텐츠 영역을 요소의 안쪽 여백까지 포함하는
+  크기로 확장합니다. 영역의 크기는 안쪽 여백 박스 너비와 안쪽 여백 박스 높이 입니다.
+- Border 영역: 테두리 경계가 감싼 영역으로, 안쪽 여백 영역을 요소의 테두리까지 포함하는 크기로 확장합니다.
+  영역의 크기는 테두리 박스 너비와 테두리 박스 높이입니다.
+- Margin 영역: margin영역은 바깥 여백 경계가 감싼 영역으로, 테두리 요소를 확장해 요소와 인근 요소 사이의
+  빈 공간까지 포함하도록 만듭니다. 영역의 크기는 바깥 여백 박스 너비와 바깥 여백 박스 높이입니다.
 
 Margin과 Padding의 특징
 
 - padingdms auto 값을 가질 수 없다.
-- padding은 content-box의 속성 값을 가질때는 padding 확장 현상이 발생해서 padding의 값을 주면 콘텐츠 영역이 늘어나 보이는 현상 >> 해결 방법: border-box속성 값을 준다.
-- margin은 auto 값을 가질 수 있다 >> margin의 bg는 불투명하기 때문에 auto를 사용하면 콘텐츠의 값이 늘어나 보이지 않는 현상이 있다.
+- padding은 content-box의 속성 값을 가질때는 padding 확장 현상이 발생해서 padding의 값을 주면 콘텐츠 영역이
+  늘어나 보이는 현상 >> 해결 방법: border-box속성 값을 준다.
+- margin은 auto 값을 가질 수 있다 >> margin의 bg는 불투명하기 때문에 auto를 사용하면 콘텐츠의 값이 늘어나
+  보이지 않는 현상이 있다.
   ※ margin: 0 auto를 사용하려면 width값을 가지고 있어야 한다.
 - margin은 음수의 값을 가질 수 있다.(Nagative Margin)
 
----
+Layout float
 
-float: linebox 원리/ 노멀 플로어/ 상자끼리는 곂치지만 텍스트는 옆으로 밀리는 현상이 있다.
-플롯 안에 자식 요소가 전부 float 된다면 부모 요소는 높이를 잃게 되면서
-밑에 있는 슬로건 영역에 영향을 준다. >>> 해결방법: height를 준다./ clear를 사용한다./ overflow: hidden 사용/
-가상 요소 선택자 ::after (clearfix)
+- float: 일반적인 흐름에서 분리된 요소를 부모 영역을 기준으로 배치하는 속성
+- Normal Flow: CSS페이지 레이아웃 기법 중 normal flow 페이지 레이아웃을 제어하는 어떠한 것도 하지 않음면,
+  브라우저가 기본적으로 HTML을 레이아웃하는 방법
+- 부모요소에 포함된 모든 자식요소들이 float되면 부모요소는 높이를 잃게 되며 밑에 있는 부모요소의 형제 요소의 영역에 영향을 준다.
+  또한 float된 상자는 노멀플로워에서 띄워지면서 서로 겹치지만 텍스트는 옆으로 밀리는 현상이 발생
 
-※ clear 속성은 마진으로 돌아간다 >> clear를 사용하고 margin을 사용하면 마진이 겹친다./ clear 속성은 block 속성이다.  
-※ overflow:hidden은
-※ 2중 float: 그루핑을 한번더 하고 // 부모 요소가 float이면 자식 요소도 float을 하면 높이를 같이 받는다
+※ 해결 방법: height를 준다./ clear를 형제 요소에 사용한다./ overflow:hidden을 사용/ 가상 요소 선택자::after를 사용한다.(clearfix)
 
-※ 가상 요소 선택자: 새로운 가상 요소 선택
-※ clear를 형제한테 준것과 자식에게 준것의 차이?? 영향?
+※ clear속성은 마진으로 돌아간다 >> clear를 사용하고 margin을 사용하면 마진이 겹친다./ clear속성dms display:block에만 영향을 받는다.
 
-- 오버플로우는 독립적인 영역을 다시 만든다. 높이를 다시 읽어 드리는 역할에서 자식의 요소 크기를 찾게 된다
-- ::after : 마지막 요소(자식)/ content: " "를 필요로 한다/ content는 span으로 만든다 ==> clear속성은 block에만 영향을 받는다 ==> 그래서 display: block으로 만든다.
-  error로 처리 안하는 이유: 인라인 요소가 블럭 요소로 바뀔 수 있어서이다. 모든 인라인 요소랑 블럭 요소에 해당 된다./ clearfix로 클래스 이름을 작성하는 이유는 여러번 사용하는
-  기능이기 때문에 공통으로 쓴다 (유틸리티: 재사용 가능한 css덩어리)
+※inline-box일때 작동하지 않는 동작은 display값을 block으로 바꿀 수 있기 때문에 error처리 하지 않는다. (모든 인라인, 블록 요소에 해당 된다.)
 
----
+Flaot 겹칩 현상 해결 방법
 
-main에 flex를 지정하면 main은 flex-container가 되고 자식 요소는 flex-item이 된다.
-flex-디렉션은 기본 설정값이
-main
+1. overflow:hidden 을 사용한다 >> float으로 떠있는 요소들의 부모요소에 overflow속성을 주는것이다. >>
+   단점: overflow:hidden을 활용하 float을 해제했을 경우 부모요소의 고정된 width/height값을 가지고 있는 상태에서
+   자식 요소 중 하나가 부모요소의 영역보다 그다면 hidden값때문에 자식 요소의 크기가 잘리는 현상이 발생
 
-노멀 플로워는 높이는 텍스트만큼만 너비는 부모 요소의 너비 만큼이다
-근데 플렉스를 하면 플렉스 디렉션의 기본값이 로우고 그러면 노멀 플로워의 반대로(너비는 텍스트만큼 높이는 부모 요소만큼이다) 작동 한다
+   ※ overflow의 원리: 오버플로우는 독립적인 영역을 다시 만든다. 높이를 다시 읽어 드리는 역할에서 자식의 요소 크기를 찾게 된다.
 
-flex-flow는 플렉스 디렉션 + 플렉스 렙의 단축 속성이다.
+2. 가상 요소 선택자 사용: clearfix라는 가상의 클래스 값을 만들어서 가상클래스 안에 clear값을 주고 display값을 block을 준다.
+   그러고 나서 float을 사용한 요소의 부모 요소에 clearfix클래스를 부여한다.
 
-플렉스 엔드 값은 오른쪽이 아니다 >>> 플렉스 디렉션(리버스 등등 )을 사용하면 방향이 유동적으로 바뀌기 때문이다.
-참조 사이트 >>>>https://css-tricks.com/snippets/css/a-guide-to-flexbox/ >>> 메인축 교차축
+   ※ clearfix로 클래스 이름을 작성하는 이유는 여러번 사용하는
+   기능이기 때문에 공통으로 쓴다 (유틸리티: 재사용 가능한 css덩어리)
 
-flex-grow: 팽창 확장 / 기본값 0() ; >>> 반응형에 유횽
+   ※ ::after : 마지막 요소(자식)/ content: " "를 필요로 한다/ content는 inline-box의 속성을 기본적으로 내장하고 있다.
 
-※ flex는 내부적으로 축소한다 >>> flex-shrink >> nowrap일 경우
-flex-box의 기본크기 >> flex-basic
+   ※ 2중 float: 그루핑을 한번더 하고 // 부모 요소가 float이면 자식 요소도 float을 하면 높이를 같이 받는다
 
----
+Layout Flex
+
+- CSS3에 추가된 유연한 박스 레이아웃
+- 부모의 display값을 flex로 준다 그러면 부모는 flex-container가 되고 그 안의 자식 요소는 flex-item이 된다.
+- flex-direction: 요소 박스의 배치 방향을 지정/ flex-direction의 기본값은 row(normal flow의 높이는 텍스트 높이만큼,
+  너비는 부모 요소의 크기만큼) column값을 가지게 되면 반대로 작동(너비는 텍스트만큼 높이는 부모 요소만큼이다)/ reverse값도 있다.
+- flex-flow: flex-direction + flex-wrap값의 단축 속성 >> ex) flex-flow: row nowrap
+- flex-grow: flex item의 증가 너비 비율을 설정(자식 요소에 사용)
+- flex-shrink: flex item의 감소 너비 비율을 설정(자식 요소에 사용)
+- flex-basis: flex-item의(공간 배분 전) 기본 너비 설정(자식 요소에 사용)
+- order: item의 순서를 설정한다./ item에 숫자를 지정하고 숫자가 클수록 순서가 밀린다./ 기본값은 0이다.
+
+※ normal flow는 height는 text의 높이만큼 width는 부모 요소의 width만큼의 크기를 가진다.(block-box)
+
+※ flex-end값은 방향으로 생각하면 안된다. flex-direction을 사용하면 main-axis축이 유동적으로 바뀌기 때문이다.
+참조 사이트 >>>>https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 
 <!-- ※ script는 왜 link를 왜 안쓰나 ??
 번들링??
