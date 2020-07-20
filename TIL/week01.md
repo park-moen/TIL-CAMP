@@ -109,7 +109,34 @@ HTML / CSS
 12. 선형화 구조란?
 
 ```
+  위에서 아래로 순차적으로 내려가는 구조
+```
 
+13. conference란?
+
+```
+  재사용 가능한 css덩어리/ 유틸성의 증가/ 코드의 세분화에 용이
+
+```
+
+14. 정량적, 정성적이란?
+
+```
+  정량적: 기계적으로 평가 가능함
+  정성적: 기계로 평가 불가능 / 사람이 해야한다.
+```
+
+15. 목록(list) 태그 장점
+
+```
+  스크린리더(보조 기기)프로그램이 목록이라고 인식, 알려주고 목록의 갯수도 알려주는 효과(접근성)
+```
+
+16. a tag의 기본값, font-variant
+
+```
+  a 요소는 color값과 밑줄을 기본 내장하고 있다. 그래서 처음 사용할때 a요소의 color를 inherit(상속)로 설정한다.
+  font-variant: small-caps값은 소문자 크기의 대문자를 만드는 값이다.
 ```
 
 ## 구조 및 디자인(HTML/CSS) // DAY02
@@ -258,6 +285,41 @@ Layout Flex
 ※ flex-end값은 방향으로 생각하면 안된다. flex-direction을 사용하면 main-axis축이 유동적으로 바뀌기 때문이다.
 참조 사이트 >>>>https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 
+Layout Position
+
+- position 속성의 기본값은 static이다.(top,bottom,left,right속성값이 적동되지 않습니다.)/ position 속성은 상속되지 않는다.
+- absolute: 절대 좌표와 함께 위치를 지정할 수 있고 자신보다 사위 요소가 필요하다/ absolute값은 화명의 영역을 차지하지 않고
+  위로 띄우면서 전체 레이아웃을 무너뜨린다.
+  ※ absolute값을 가진 요소의 부모요소가 relative값을 가지고 있지 않으면 그 위의 상위 요소로 올라가며 어디에도 relative값이
+  없으면 전체 문서(HTML요소)의 기준으로 좌표를 지정
+- relative: 원래 위치를 기준으로 좌표를 지정한다.
+- fixed: 뷰포트에 고정.
+
+Layout Inline-block
+
+- 기본적으로 inline-box의 특성을 가지고 있지만, block의 특성인 가로,세로 값을 가질 수 있다.
+- text-align의 속성을 사용해서 가로 위치를 지정할 수 있다.
+- 투 댑스 메뉴: 원 댁스 메뉴 + 원 댁스 메뉴???
+- 공백 문자가 생기는 치명적인 단점이 있다.
+
+button or span 사용
+
+- button: 여러가지 기능을 제어하는 요소
+- span: inline-box의 의미 없이 요소를 래핑하는 요소
+  ※ span의 단점: 키보드 접근이 불가능(접근성) >> tabindex속성을 부여해야 한다.
+
+※ buton이 span보다 더 효율적인 기능이지만 현장에서 많이 쓰지 않는 이유는 button의 기본값을 정확히 숙지하지 못하기 때문 >>
+브라우저 검사 기능으로 확인 가능
+※ a[href], form, button 속성은 키보드 접근이 가능
+
+- 주요 콘텐츠에 제목 작성의 중요성 및 보조 기기에서에 인식 가능한 제목 숨기기 방법
+  장애 환경 및 장애 신체를 가진 사람들이 보조 기기를 사용함에 있어 제목을 작성하지 않거나 콘텐츠에 알맞는 제목을 작성하지
+  않을 경우 스크린리더기를 사용하는 사람들이 페이지의 콘텐츠를 사용할 수 있는 방법이 많이 없어지기때문이다.(접근성 관련 이슈)
+- 제목 숨기기 이름 작성 tip: a11y-hidden/ off-screen/ readable-hideen 등의 class의 이름을 부여
+- 이미지 등 콘텐츠에 중요한 역할을 하지 않는 부분을 보조 기기가 인식 하지 않는 방법은 속성 aria-label="메뉴"
+  사용(aria-hidden속성 사용 가능)
+- dispaly: none은 보조 기기상에서 인식되지 않는다.
+
 <!-- ※ script는 왜 link를 왜 안쓰나 ??
 번들링??
 노멀라이즈와 리셋.css랑 차이
@@ -273,6 +335,10 @@ addob xd (유료)
 - 최소한의 유지보수로 최대의 이익
 - 모듈관리를 잘하자
 ※ html validation: web developer클릭 tools 클릭 validata local HTM
+padding: 0 8px 0 3px에 a를 사용하는 이유: 사용자 경험상 면적의 크기를 크게 만들기 위해서이다.
+풀백??
+너거티브 마진??
+clip-path 속성???
 -->
 
 <!-- 단축기
@@ -302,46 +368,9 @@ git push origin 01-Basic >> 원격 브랜치에 삽입 -->
    > > > > > > :은 span으로 묵기(읽을 필요는 없음 >> aria-hidden = true 사용 >> 보조 기기가 읽지 않음)
 3. 내비게이션 -->
 
-- 기본값: static
-- absolute: 절대 배치/ 자신보다 상위 요소가 필요함 >> 부모 요소가 스테틱이면 무시하고 다음 요소로 넘어간다
-- absolute 화면의 영역을 차지하지 않는다. 위로 띄우면서 레이아웃을 무너뜨린다.
-- 값을 주지않으면 흐름을 따른다.
-- 렐러티브는 영역을 차지하고 있다
-
-inline-block ---- member
-
-- text-align 사용
-- 공백 문자가 생기는 치명적인 단점이 있다.
-
-a 태그는 color를 가짐 >> a태그에 inherit를 사용한다.
-font-variant: small-caps >> 소문자 크기의 대문자 만들기
-padding: 0 8px 0 3px에 a를 사용하는 이유: 사용자 경험상 면적의 크기를 크게 만들기 위해서이다.
-inline 속성의 특성: 위아래에 부모요소
-
-인라인 블럭의 특성을 파악
-플롯이랑 플렉스로 다시 만들어 보기
-
-원 댁스 메뉴 / 투 댁스 메뉴
-
-투 댑스 메뉴: 원 댁스 메뉴 + 원 댁스 메뉴
-button: 기능을 제어하는 요소
-
-span은 키보드 접근이 불가능 >> tabindex속성을 줘야 한다, role 값을 btton을 줘야한다.
-a[href], form, buttom는 키보드 접근이 가능
-
-제목 찾기 매우 중요
-제목 숨기기 이름: a11y-hidden/ off-screen/ readable-hidden
-이름을 nav에 넣지 않는 방법: 속성 aria-label="메뉴" 사용
-
-유튜브 AOA 접근성 관련 동영상
-
-display: none은 보조 기기상에 인식하지 않는다
-clip-path 속성??
-네거티브 마진??
-a에 role="button" 사용하면 버튼 역할로한다
-폴백?
-
+<!-- 유용한 사이트
 https://bennettfeely.com/clippy/ >>> css clip path maker
 https://codepen.io/ >>> text shadow
 https://www.colorzilla.com/gradient-editor/ >>> 그라데이션
 css gradient pattern gallery >>> 그라데이션
+ -->
