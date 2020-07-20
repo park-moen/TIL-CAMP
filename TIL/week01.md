@@ -109,7 +109,7 @@ HTML / CSS
 12. 선형화 구조란?
 
 ```
-  위에서 아래로 순차적으로 내려가는 구조
+  위에서 아래로 순차적으로 내려가는 구조, 접근하는 순서를 정확히 따지는 구조
 ```
 
 13. conference란?
@@ -147,7 +147,7 @@ HTML / CSS
   ※ float, postion: static을 제외한 모든 값은 BFC가 되어서 display:block이 된다. >>> float은 width값을 가질 수 있다.
 ```
 
-## 구조 및 디자인(HTML/CSS) // DAY02
+## 구조 및 디자인(HTML/CSS)
 
 ### [HTML5]
 
