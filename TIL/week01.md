@@ -139,6 +139,14 @@ HTML / CSS
   font-variant: small-caps값은 소문자 크기의 대문자를 만드는 값이다.
 ```
 
+17. BFC(block format content)
+
+```
+  블록 서식 문맥(block format context)은 웹 페이지의 블록 레벨 요소를 렌더링하는데 사용되는 CSS의 비주얼
+  서식 모델(visual formatting model)중 하나이다. 그 안에서 블록박스의 레이아웃이 결정되며 float끼리 서로 영향을 준다.
+  ※ float, postion: static을 제외한 모든 값은 BFC가 되어서 display:block이 된다. >>> float은 width값을 가질 수 있다.
+```
+
 ## 구조 및 디자인(HTML/CSS) // DAY02
 
 ### [HTML5]
@@ -288,11 +296,13 @@ Layout Flex
 Layout Position
 
 - position 속성의 기본값은 static이다.(top,bottom,left,right속성값이 적동되지 않습니다.)/ position 속성은 상속되지 않는다.
-- absolute: 절대 좌표와 함께 위치를 지정할 수 있고 자신보다 사위 요소가 필요하다/ absolute값은 화명의 영역을 차지하지 않고
-  위로 띄우면서 전체 레이아웃을 무너뜨린다.
+  static말고 다른 값을 사용하면 normal flow가 아니다.
+- absolute: 절대 좌표와 함께 위치를 지정할 수 있고 absolute를 사용하면 값을 가지지 않고 그 위에 뜬다.
+  absolute값은 화명의 영역을 차지하지 않고 위로 띄우면서 전체 레이아웃을 무너뜨린다. absolute에 값을
+  주지않으면 width나 height는 컨텐츠에 맞게 배치된다.
   ※ absolute값을 가진 요소의 부모요소가 relative값을 가지고 있지 않으면 그 위의 상위 요소로 올라가며 어디에도 relative값이
   없으면 전체 문서(HTML요소)의 기준으로 좌표를 지정
-- relative: 원래 위치를 기준으로 좌표를 지정한다.
+- relative: 원래 위치를 기준으로 좌표를 지정한다./ 본인이 있었던 영역을 유지한다.
 - fixed: 뷰포트에 고정.
 
 Layout Inline-block
@@ -320,6 +330,45 @@ button or span 사용
   사용(aria-hidden속성 사용 가능)
 - dispaly: none은 보조 기기상에서 인식되지 않는다.
 
+** 콘텐츠의 heading은 중요한 부분에만 사용한다. 굳이 중요하지 않은 부분에 사용 할 필요 없음. **
+** 가상 클래스 선택자 hover은 마우스만 적용된다 === 접근성을 위해서 가상 클래스 선택자 focus도 같이 쓰는 것을 추천!! **
+
+Linear-gradient
+
+- CSS linear-gradient() 함수는 두 개 이상의 색이 직선을 따라 점진적으로 변화하는 이미지를 생성합니다. 함수의 결과는 <image>의
+  특별한 종류인 <gradient> 자료형입니다. <gradient>는 <image>의 한 종류로서 <image>를 사용하는 곳에만 적용할 수 있습니다.
+  따라서 linear-gradient()를 background-color 등 <color> 자료형을 받는 속성에는 사용할 수 없습니다.
+
+Multiple-Background
+
+- 여러 개의 배경을 한 번에 적용할 수도 있습니다. 첫 번째 배경이 맨 위에, 마지막 배경이 맨 밑에 위치하는 레이어 구조를
+  사용하게 됩니다. 마지막 배경에만 배경색을 적용할 수 있습니다. z-index와 반대로 작동, 먼저 보이고 싶은 곳을 위에 작성한다.
+  (콤마로 구분한다)
+
+Font-family
+
+- CSS font-family 속성은 선택된 요소에 우선 순위가 지정된 font family 이름과 generic family 이름을 지정할 수 있게 해줍니다.
+  ※ generic family : 모양이 비슷한 글꼴들의 그룹
+- 웹 제작자는 font-family 목록에 최소 한 개의 generic family를 추가해야 하는데, 시스템이나 @font-face 규칙을 이용 해 다운로드
+  받은 폰트 중에 특정 폰트가 있다는 것을 보장할 수 없기 때문입니다. generic family는 브라우저가 대체할 수 있는 폰트가 필요한 경우
+  선택할 수 있게 해줍니다.
+- Serif(바탕체), Sans-serif(고딕체), Cursive(필기체), Monospace(가로 폭이 동일한 글꼴)
+
+White-space, Line-height의 half leading
+
+- CSS white-space 속성은 요소가 공백 문자를 처리하는 법을 지정합니다.
+- 위 아래 반반씩 leading이 나눠져 있고 각 부분은 half leading이라고 부른다.
+
+Animation 속성
+
+- animation: 요소에 애니메이션을 설정, 제어/ 단축 속성
+- animation: 애니메이션이름 지속시간 [타이밍함수 대기시간 반복횟수 반복방향 전후상태 재생/정지];
+  ※ animation은 @keyframse로 이름을 만들어서 사용
+  ※ 위치를 옮기는 애니메이션을 주고 싶을때는 margin이나 position을 사용하기 보다 translate를
+  사용하는 것이 효률적이다(margin, position은 CPU 사용 translate는 GPU사용)
+- 애니메이션 개별 속성으로 animation-name, animation-duration, animation-timing-function,
+  animation-delay, animation-iteration-count이 있다
+
 <!-- ※ script는 왜 link를 왜 안쓰나 ??
 번들링??
 노멀라이즈와 리셋.css랑 차이
@@ -334,12 +383,16 @@ addob xd (유료)
 - figma (레이아웃 무료 튤)
 - 최소한의 유지보수로 최대의 이익
 - 모듈관리를 잘하자
-※ html validation: web developer클릭 tools 클릭 validata local HTM
-padding: 0 8px 0 3px에 a를 사용하는 이유: 사용자 경험상 면적의 크기를 크게 만들기 위해서이다.
-풀백??
-너거티브 마진??
-clip-path 속성???
--->
+  ※ html validation: web developer클릭 tools 클릭 validata local HTM
+  padding: 0 8px 0 3px에 a를 사용하는 이유: 사용자 경험상 면적의 크기를 크게 만들기 위해서이다.
+  풀백??
+  너거티브 마진??
+  clip-path 속성???
+  HTML Entities: 특수 문자
+  리플로워? 애니메이션에서?
+- 상자의 규모를 다시 그려야한다. >> 리플로워
+- 상자의 색을 다시 그려야한다. >> 리플레인팅
+  -->
 
 <!-- 단축기
   shift + alt 밑에 키: 빠른 복사
@@ -349,7 +402,8 @@ clip-path 속성???
 <!-- git 단축기
 git checkout master >>> master로 이동
 git push origin --delete Day01 >> 브랜치 삭제
-git push origin 01-Basic >> 원격 브랜치에 삽입 -->
+git push origin 01-Basic >> 원격 브랜치에 삽입
+git merge ==== 병합 방법-->
 
 <!-- ** 고정형 레이아웃 **
 
@@ -373,4 +427,8 @@ https://bennettfeely.com/clippy/ >>> css clip path maker
 https://codepen.io/ >>> text shadow
 https://www.colorzilla.com/gradient-editor/ >>> 그라데이션
 css gradient pattern gallery >>> 그라데이션
+정찬명  >> 접근성 관련 인물
+접근성 관련 reference>> w3c >> wai >> wcag
+https://cubic-bezier.com/ >>>> cubic-bezier 참조
+https://www.slideshare.net/search/slideshow?searchfrom=header&q=wsconf >> 웹폰트 애니메이션 관련
  -->
