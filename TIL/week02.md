@@ -125,11 +125,23 @@ method post 방식은 정보를 숨기는 방식이다 (그래도 찾으면 알 
 
 ※ position:a 는 값을 주지 않으면 그자리에 뜬다.
 
-a 요소는 inline-box로 부모 요소 영역의 padding 값과 a 요소의 padding의 값이 겹쳐 보인다.
+※ label요소는 input요소 랑 1대 1로 대응해야 한다. 만약 두개 이상의 서식 작성 값이 필요할 경우 title(전역 속성)을 사용 가능하다. >> input요소와 label요소를 한쌍으로 쓰지 않을 경우 보조 기기에서 인식 못하는 현상이 발생(접근성 저하)
+
+※ aria-labelledby="" : 레이블 제공을 위한 aria-속성. 상태 값은 연결시킬 레이블 id를 입력한다.
+
+※placeholder: placeholder는 label의 역할을 대신 할 수 없다. >> placeholder은 요소에 대해 힌트를 주는 역할을 가진 속성일 뿐이다.
+
+※ a 요소는 inline-box로 부모 요소 영역의 padding 값과 a 요소의 padding의 값이 겹쳐 보인다.
 (크기는 늘어나지 않는다.)
 
 ※ 명시적 아웃라인, 암묵적 아웃 라인: section을 사용하면 명시적으로 아웃라인을 가질 수 있고
 그냥 heading을 주면 다음 아웃라인 전까지 암묵적으로 아웃라인을 가질 수 있다.
+
+※ form요소의 자식 요소로 fieldset요소를 여러개 사용이 가능하다. >> fieldset요소는 IE, 파이어 폭스에서 flex를 사용할 경우 레이아웃이 무너지는 현상이 발생한다. >> 해결방법: div요소의 속성 값을 role="group"을 사용하면 이런 현상을 대처할 수 있다.
+
+※ form validation: required속성을 사용해서 필수적으로 작성해야 서버영역에서 쾌적한 서비스를 제공할 수 있게 한다.(크라우드에서 검증 가능 역할로 쓰인다.)
+
+※ input요소의 type을 submit을 쓰면 button의 역할가 같은 역할을 한다.(대신 button요소는 js에서 text를 변경해야 하고 input요소는 value의 값을 변경해야 한다.)
 
 dl, dt,dd 요소
 
@@ -159,12 +171,19 @@ aria 기술!!!!  >>> 공부 하자 !!!
 독립적으로 완결되는 정보는 article을 사용하기 좋음
 heading은 h1~h6 (h1 ~ h4이상은 다시 짜야한다.)
 스텝별로 그려보기
+배운걸 찾아서 실습을 해보는 것이다.
+>>>실습한 것을 잘 못된 점을 찾아보자
+※ html 네이티브 방식 ??  >> aria 방식(AOA 채널)
+※ name속성의 값을 검색어를 담는 그릇!!
+※ white-space:nowrap의 사용성을 확인해보자.
 
+※ 메가 네비게이션(사용성에 매우 불편함)
 -->
 
 <!-- 유용한 사이트
 naver.com/hacosa  >> 코딩 도움 카페
 http://nthmaster.com/ >> nth-child 참조 공부
+텝 메뉴 예제 찾아보기(aria 패턴) >> github.com/niawa 참조하자
 -->
 
 <!--
