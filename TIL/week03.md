@@ -24,21 +24,25 @@ HTML / CSS
 ※ flex 사용시 column을 사용하기보다 row를 사용하는 것이 레이아웃 작업시 유동적으로 작업을 할 수 있다.
 column은 2단 레이아웃을 만들때 height를 지정해야한다는 단점을 가지고 있어서 row를 사용하는 것이 유리
 
-※ aria에서 role="none"
+※ aria에서 role="none" 의미를 가지지 않게 하는 속성의 값으로 과거에는 presentation을 사용했다.
 
-role="none" >> 의미를 없다 (presentation >> 과거에 쓴 것) 두가지는 동일한 개념이라고 생각하면 된다.
-@medai query 공부하기 >> picture요소 공부하기
-viewport 공부하기 >> 쓰지않으면 브라우저에서 확장해서 보여준다.
-display:contents?? 콘텐츠에 영향을 주기 싫을때 사용하는 방법??
+※ transform: 기능은 전부 자신의 중앙을 기준으로 이동을 한다. >> top:50%로 고정을 한다(그래도 중앙에 배치되는 것이 아니라 중아에서 시작을 한다)
+translateX(-50%)의 값을 줘서 중앙을 맞추는 방법이 있다.
+
+※ display:contents는 요소 자체적으로 특정 상자를 생성하지 않게 하는 속성의 값이다. 크로스브라우징에서 이슈가 있다.
+form요소의 fieldset 요소처럼 flex, grid에서 이슈가 있는 것을 방지하기 위해 만들어진 속성의 값이다.
 
 ==========================================================================
 
 7/ 29
 
-transform: 기능은 전부 자신의 중앙을 기준으로 이동을 한다 >> 해결 방법:??
-
 <!-- 유용한 사이트
 troy >> 반응형 웹 테스트 사이트
 http://responsivelogos.co.uk/ >> 로고 모음집
 grid system generator, https://960.gs/ >> 그리드 계산 사이트
+ -->
+
+<!-- 공부해야 합니다
+@medai query 공부하기 >> picture요소 공부하기
+viewport 공부하기 >> 쓰지않으면 브라우저에서 확장해서 보여준다.
  -->
