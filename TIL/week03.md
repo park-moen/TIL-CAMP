@@ -36,6 +36,10 @@ form요소의 fieldset 요소처럼 flex, grid에서 이슈가 있는 것을 방
 
 ※ figure요소는 img뿐만 아니라 vedio, graph도 사용 가능하다.
 
+※em: 부모의 font-size를 상속 받음(부모 font-size가 설정되어 있지 않으면, 1em = 16px)
+
+※ rem: 부모의 font-size를 상속 받지 않고 최상위(html요소)요소의 font-size를 기준으로 한다.
+
 ## 반응형 레이아웃
 
 blur(), backdrop-filter: blur()
@@ -43,6 +47,29 @@ blur(), backdrop-filter: blur()
 - blur() 함수는 _주어진_ 이미지에 가우시안 블러를 적용합니다. 속성은 filter를 사용
   ※ 지정한 화면을 흐리게 하며, 지정한 화면의 배경을 흐리게 하는 방법이 아니다.
 - backdrop-filter:blur()는 지정한 화면의 배경을 흐리기 하기 위한 속성으로 모던 기술입니다.(크로스브아우징 이슈가 있지만 필요요소라기 보단 스타일링 부분의 이슈이므로 사용성에 있어서 크게 차이를 두지 않는다.)
+
+속성 선택자
+
+- [attr]: attr이라는 이름의 특성을 가진 요소를 선택, 특성을 포함하고 있으면 모두 선택한다.
+  ex) a[target]의 속성 선택자 사용시 <a href="#" target="_blank">가능</a> / <a href=#>불가능</a>
+- [attr=value]: attr이라는 이름의 특성값이 정확히 value인 요소를 선택, 반드시 속성의 값이 속성 선택자명과 동일해야 한다.
+  ex) a[target="_blank"]의 속성 선택자 사용시 <a href="#" target="_blank">가능</a> / <a href="#" target="_self">불가능</a> / <a href="#" target="blank">불가능</a>
+- [attr~=value]: attr이라는 이름의 특성값이 정확히 value인 요소를 선택, attr특성은 공백으로 구분한 여러 개의 값을 가지고 있을 수 있습니다.
+  ex) div[class~="apple"]의 속성 선택자 사용시 <div class="apple">가능</div> / <div class="pine apple">가능</div> / <div class="pine-apple">불가능</div>
+- [attr|="value"]: attr이라는 특성값을 가지고 있으며, 특성값이 정확히 value이거나 value로 시작하면서 -(하이폰) 문자가 곧바로 뒤에 따라 붙으면 요소를 선택, 케밥-케이스 사용시 많이 적용
+  ex) div[class|="layer"]의 속성 선택자 사용시 <div class="layer">가능</div> / <div class="layer-red">가능</div> / <div class="layer yellow">불가능</div> / <div class="green layer">불가능</div> / <div class="green-layer">불가능</div>
+- [attr^="value"]: attr이라는 특성값을 가지고 있으며, 접두사로 value가 값에 포함되어 있으면 이 요소를 선택(지정한 값이 class값을 시작하면 모두 가능)
+  ex) div[class^="minions"]의 속성 선택자 사용시 <div class="minions-yellow">가능</div> / <div class="minions_yellow">가능</div> / <div class="minions minimini">가능</div> / <div class="yellow minions">불가능</div> / <div class="yellow_minions">불가능</div>
+- [attr$="value"]: attr이라는 특성값을 가지고 있으며, 접미사로 value가 값에 포함되어 있으면 요소를 선택(지정한 값이 class값의 끝에 오면 모두 가능)
+  ex) div[class$="end"]의 속성 선택자 사용시 <div class="end">가능</div> / <div class="start end">가능</div> / <div class="ok_end">가능</div> / <div class="end bye">불가능</div>
+- [attr*="value"]: attr이라는 특성값을 가지고 있으며, 값 안에 value라는 문자열이 적어도 하나 이상 존재한다면 이 요소를 선택.
+- div[class*="wow"]의 속성 선택자 사용시 <div class="wow">가능</div> / <div class="wow ohoh">가능</div> / <div class="wow-haha">가능</div> / <div class="haha_wow">가능</div> / <div class="wwwwow">가능</div>
+
+가변 그리드
+
+1. max와 min
+
+-
 
 <!-- 유용한 사이트
 troy >> 반응형 웹 테스트 사이트
